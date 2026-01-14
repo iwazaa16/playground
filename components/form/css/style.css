@@ -59,3 +59,8 @@ textarea {
   color: #fff;
   cursor: pointer;
 }
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,6 +1,7 @@
 // ===== elements =====
 const form = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
+const submitBtn = document.querySelector('.submit-btn');
 
 // inputs
 const nameInput = document.getElementById('name');
@@ -65,6 +66,34 @@ form.addEventListener('submit', (e) => {
 
   if (isNameOK && isEmailOK && isMessageOK) {
     successMessage.style.display = 'block';
+
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+      submitBtn.disabled = false;
+    }, 3000);
+
     form.reset();
+  }
+});
+
+
+// ===== input events =====
+nameInput.addEventListener('input', () => {
+  if (isValidName(nameInput.value)) {
+    hideError(nameError);
+  }
+});
+
+emailInput.addEventListener('input', () => {
+  if (isValidEmail(emailInput.value.trim())) {
+    hideError(emailError);
+  }
+});
+
+messageInput.addEventListener('input', () => {
+  if (isValidMessage(messageInput.value.trim())) {
+    hideError(messageError);
   }
 });

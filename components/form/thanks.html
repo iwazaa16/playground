@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>送信完了 | お問い合わせ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="thanks">
+    <h1 class="thanks__title">送信が完了しました</h1>
+    <p class="thanks__text">
+      お問い合わせありがとうございます。<br>
+      内容を確認のうえ、通常2〜3営業日以内にご連絡いたします。
+    </p>
+    <a href="index.html" class="thanks__btn">
+      トップページへ戻る
+    </a>
+  </main>
+  <script>
+    // 送信経由かチェック
+    const isSubmitted = sessionStorage.getItem('isSubmitted');
+
+    if (!isSubmitted) {
+      // 直アクセスの場合はフォームへ戻す
+      window.location.href = 'index.html';
+    } else {
+      // 一度表示したら通行証を破棄
+      sessionStorage.removeItem('isSubmitted');
+    }
+  </script>
+</body>
+</html>
